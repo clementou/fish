@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>
-// When proxied under clementou.com, the bare "/fish" URL would break
-// relative asset paths — bounce to the trailing-slash form.
+// Bare "/fish" breaks relative asset paths when proxied — bounce to the slash form.
 if (location.pathname === "/fish") location.replace("/fish/" + location.search + location.hash);
 </script>
 <title>The Fish Club — A Field Guide to Tinned Fish</title>
@@ -60,7 +59,6 @@ if (location.pathname === "/fish") location.replace("/fish/" + location.search +
 </div>
 
 <main>
-  <!-- ============ SHELF VIEW ============ -->
   <section id="shelfView">
     <div class="filterbar" id="filterbar">
       <div class="search-wrap">
@@ -97,7 +95,6 @@ if (location.pathname === "/fish") location.replace("/fish/" + location.search +
     </div>
   </section>
 
-  <!-- ============ PANTRY VIEW ============ -->
   <section id="pantryView" hidden>
     <div class="pantry-head">
       <h2>My Pantry</h2>
@@ -140,7 +137,6 @@ if (location.pathname === "/fish") location.replace("/fish/" + location.search +
   <p class="footer-fine"><span id="footerStats"></span> Your ledger lives in this browser only. No fish were harmed in the rendering of these labels.</p>
 </footer>
 
-<!-- ============ MODAL ============ -->
 <div class="modal-backdrop" id="modalBackdrop" hidden>
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalName" id="modal">
     <button class="modal-close" id="modalClose" type="button" aria-label="Close">×</button>

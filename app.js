@@ -1,12 +1,5 @@
-/* ============================================================
-   LATA — app logic
-   ============================================================ */
-
 const $ = (sel) => document.querySelector(sel);
 const byId = (id) => TINS.find((t) => t.id === id);
-
-/* ---------------- generative label art ---------------- */
-
 function fishParts(f, b, { rx = 34, ry = 13, cx = 54, cy = 30, fin = true, spots = 0, stripes = 0, tail = true } = {}) {
   const tailX = cx + rx - 2;
   let s = "";
@@ -95,9 +88,6 @@ const ART = {
     `<circle cx="14" cy="40" r="5.5" fill="${f}"/>` +
     `<circle cx="12" cy="38" r="1.5" fill="${b}"/>`,
 };
-
-/* ---------------- hand-drawn mini flags (24 x 16) ---------------- */
-
 const FLAGS = {
   PT: `<rect width="24" height="16" fill="#DA291C"/><rect width="9.6" height="16" fill="#046A38"/><circle cx="9.6" cy="8" r="1.9" fill="#FFE900"/>`,
   ES: `<rect width="24" height="16" fill="#F1BF00"/><rect width="24" height="4" fill="#AA151B"/><rect y="12" width="24" height="4" fill="#AA151B"/>`,
@@ -134,9 +124,6 @@ function artFor(species, fg, bg) {
   const draw = ART[species] || ART.sardine;
   return `<svg viewBox="0 0 120 60" role="img" aria-label="${SPECIES[species].label}">${draw(fg, bg)}</svg>`;
 }
-
-/* ---------------- persistent store ---------------- */
-
 const STORE_KEY = "fish-club:v1";
 
 const store = {
@@ -162,13 +149,7 @@ const store = {
 };
 
 const tastedCount = () => Object.keys(store.tasted).length;
-
-/* ---------------- ui state ---------------- */
-
 const ui = { q: "", species: new Set(), country: "", medium: "", hideTasted: false, sort: "curated", iconic: false };
-
-/* ---------------- tin + card markup ---------------- */
-
 function tinHTML(t, { stamp = false } = {}) {
   return `
     <div class="tin" data-pattern="${t.pattern}" style="--c1:${t.colors[0]};--c2:${t.colors[1]}">
@@ -196,9 +177,6 @@ function cardHTML(t, i) {
       </div>
     </article>`;
 }
-
-/* ---------------- shelf ---------------- */
-
 function filtered() {
   const q = ui.q.trim().toLowerCase();
   const list = TINS.filter((t) => {
@@ -264,9 +242,6 @@ function updateProgress() {
   $("#ringFill").style.strokeDashoffset = String(100 - pct * 100);
   $("#progressText").textContent = `${n} / ${TINS.length}`;
 }
-
-/* ---------------- modal ---------------- */
-
 let modalId = null;
 let modalRating = 0;
 
@@ -409,9 +384,6 @@ function checkMilestones(id) {
   }
   toast(`Stamped <b>${t.brand} ${t.name}</b> into your pantry.`);
 }
-
-/* ---------------- pantry ---------------- */
-
 function rankFor(n) {
   if (n >= TINS.length) return "Grand Conservador";
   if (n >= 40) return "Lata Legend";
@@ -490,9 +462,6 @@ function renderPantry() {
 function escapeHTML(s) {
   return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
-
-/* ---------------- roulette ---------------- */
-
 let rouletteBusy = false;
 
 function roulette() {
@@ -536,9 +505,6 @@ function roulette() {
     }, 1100);
   }, elapsed + 500);
 }
-
-/* ---------------- confetti ---------------- */
-
 const cvs = $("#confettiCanvas");
 const ctx = cvs.getContext("2d");
 let parts = [];
@@ -606,9 +572,6 @@ function confettiLoop() {
     ctx.restore();
   });
 }
-
-/* ---------------- toast ---------------- */
-
 let toastTimer = null;
 function toast(html) {
   const el = $("#toast");
@@ -617,9 +580,6 @@ function toast(html) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => el.classList.remove("is-visible"), 3000);
 }
-
-/* ---------------- hero slot machine ---------------- */
-
 function randomTin() {
   return TINS[(Math.random() * TINS.length) | 0];
 }
@@ -631,9 +591,6 @@ function cycleHero() {
   setTimeout(() => (stage.innerHTML = tinHTML(randomTin())), 270);
   setTimeout(() => stage.classList.remove("is-flipping"), 600);
 }
-
-/* ---------------- ticker ---------------- */
-
 function buildTicker() {
   const words = [
     "SARDINHAS", "ATÚN", "MEJILLONES", "PULPO", "ANCHOAS", "BERBERECHOS", "NAVAJAS",
@@ -643,9 +600,6 @@ function buildTicker() {
   const group = words.map((w) => `<span>${w}</span><b>·</b>`).join("");
   $("#tickerTrack").innerHTML = group + group;
 }
-
-/* ---------------- views, filters, misc ---------------- */
-
 function showView(view) {
   const shelf = view === "shelf";
   $("#shelfView").hidden = !shelf;
@@ -679,9 +633,6 @@ function todayISO() {
   const d = new Date();
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
-
-/* ---------------- events ---------------- */
-
 function bindEvents() {
   $("#searchInput").addEventListener("input", (e) => {
     ui.q = e.target.value;
@@ -817,9 +768,6 @@ function bindEvents() {
 
   window.addEventListener("resize", sizeCanvas);
 }
-
-/* ---------------- init ---------------- */
-
 store.load();
 sizeCanvas();
 buildTicker();

@@ -1,10 +1,5 @@
-/* ============================================================
-   THE FISH CLUB — the catalog
-   120 tins · 25 countries · 20 species
-   price: 1 = under $6 · 2 = $6–12 · 3 = over $12 (kept for data, not shown)
-   iconic: curator's pick — a category-defining tin
-   colors: [label background, label ink]
-   ============================================================ */
+/* price: 1 = under $6 · 2 = $6–12 · 3 = over $12 (data only, not shown)
+   iconic: curator's pick · colors: [label background, label ink] */
 
 window.SPECIES = {
   sardine:   { label: "Sardines" },
@@ -40,7 +35,6 @@ window.COUNTRIES = {
 };
 
 window.TINS = [
-  /* ---------- PORTUGAL ---------- */
   {
     id: "nuri-olive", brand: "Nuri", name: "Sardines in Olive Oil", iconic: true,
     species: "sardine", cc: "PT", medium: "olive oil", price: 2,
@@ -185,8 +179,6 @@ window.TINS = [
     pairing: "History, with bread.",
     colors: ["#8E2F23", "#F4E8D0"], pattern: "stripes",
   },
-
-  /* ---------- SPAIN ---------- */
   {
     id: "ortiz-bonito", brand: "Ortiz", name: "Bonito del Norte in Olive Oil", iconic: true,
     species: "tuna", cc: "ES", medium: "olive oil", price: 2,
@@ -371,8 +363,6 @@ window.TINS = [
     pairing: "Pintxos night at home.",
     colors: ["#F1E5C8", "#2E6E4F"], pattern: "stripes",
   },
-
-  /* ---------- FRANCE ---------- */
   {
     id: "labelleiloise-sardine", brand: "La Belle-Iloise", name: "Sardines in Olive Oil",
     species: "sardine", cc: "FR", medium: "olive oil", price: 2,
@@ -429,8 +419,6 @@ window.TINS = [
     pairing: "Salade niçoise, naturally.",
     colors: ["#2B5C8A", "#F4E8D0"], pattern: "stripes",
   },
-
-  /* ---------- ITALY ---------- */
   {
     id: "callipo-tuna", brand: "Callipo", name: "Yellowfin Tuna in Olive Oil",
     species: "tuna", cc: "IT", medium: "olive oil", price: 2,
@@ -471,8 +459,6 @@ window.TINS = [
     pairing: "Cannellini beans and red onion.",
     colors: ["#B43A2E", "#F4E8D0"], pattern: "dots",
   },
-
-  /* ---------- NORDICS ---------- */
   {
     id: "fangst-brisling", brand: "Fangst", name: "Brisling No. 1 — Smoked Sprats",
     species: "sprat", cc: "DK", medium: "smoked, in rapeseed oil", price: 2,
@@ -505,8 +491,6 @@ window.TINS = [
     pairing: "Rye crackers and an open mind.",
     colors: ["#3E6E8E", "#F4E8D0"], pattern: "plain",
   },
-
-  /* ---------- UK ---------- */
   {
     id: "fish4ever-skipjack", brand: "Fish4Ever", name: "Skipjack Tuna in Spring Water",
     species: "tuna", cc: "UK", medium: "spring water", price: 2,
@@ -515,8 +499,6 @@ window.TINS = [
     pairing: "A very righteous tuna melt.",
     colors: ["#2E6E63", "#F4E8D0"], pattern: "waves",
   },
-
-  /* ---------- USA ---------- */
   {
     id: "fishwife-trout", brand: "Fishwife", name: "Smoked Rainbow Trout", iconic: true,
     species: "trout", cc: "US", medium: "smoked, in olive oil", price: 2,
@@ -573,8 +555,6 @@ window.TINS = [
     pairing: "Bagels, obviously.",
     colors: ["#D98E7A", "#22333B"], pattern: "waves",
   },
-
-  /* ---------- CANADA ---------- */
   {
     id: "stjeans-salmon", brand: "St. Jean's", name: "Smoked Sockeye Salmon",
     species: "salmon", cc: "CA", medium: "smoked", price: 2,
@@ -583,8 +563,6 @@ window.TINS = [
     pairing: "Straight from the tin, on a dock.",
     colors: ["#A93226", "#F4E8D0"], pattern: "stripes",
   },
-
-  /* ---------- JAPAN ---------- */
   {
     id: "sava-can", brand: "Iwatei", name: "Ça va? Sava Can — Mackerel in Olive Oil", iconic: true,
     species: "mackerel", cc: "JP", medium: "olive oil", price: 1,
@@ -609,8 +587,6 @@ window.TINS = [
     pairing: "Cold sake or a highball.",
     colors: ["#1E1E24", "#D9A441"], pattern: "plain",
   },
-
-  /* ---------- MOROCCO ---------- */
   {
     id: "titus-sardine", brand: "Titus", name: "Sardines in Vegetable Oil", iconic: true,
     species: "sardine", cc: "MA", medium: "vegetable oil", price: 1,
@@ -619,8 +595,6 @@ window.TINS = [
     pairing: "Bread, harissa, and strong tea.",
     colors: ["#C0392B", "#E8B54A"], pattern: "stripes",
   },
-
-  /* ---------- MORE PORTUGAL & SPAIN ---------- */
   {
     id: "bompetisco-tuna", brand: "Bom Petisco", name: "Tuna Fillets in Olive Oil",
     species: "tuna", cc: "PT", medium: "olive oil", price: 1,
@@ -693,8 +667,6 @@ window.TINS = [
     pairing: "A glass of albariño.",
     colors: ["#274C77", "#E8B54A"], pattern: "dots",
   },
-
-  /* ---------- MORE EUROPE ---------- */
   {
     id: "rizzoli-anchovy", brand: "Rizzoli", name: "Anchovies in Olive Oil",
     species: "anchovy", cc: "IT", medium: "olive oil", price: 2,
@@ -751,8 +723,6 @@ window.TINS = [
     pairing: "White beans, red onion, parsley.",
     colors: ["#C0392B", "#F4E8D0"], pattern: "dots",
   },
-
-  /* ---------- MORE AMERICAS ---------- */
   {
     id: "crownprince-oyster", brand: "Crown Prince", name: "Smoked Oysters",
     species: "oyster", cc: "US", medium: "smoked, in oil", price: 1,
@@ -825,8 +795,6 @@ window.TINS = [
     pairing: "Tostada, crema, chipotle.",
     colors: ["#2E6E63", "#F4E8D0"], pattern: "waves",
   },
-
-  /* ---------- AFRICA & ASIA-PACIFIC ---------- */
   {
     id: "geisha-mackerel", brand: "Geisha", name: "Mackerel in Tomato Sauce",
     species: "mackerel", cc: "GH", medium: "tomato sauce", price: 1,
@@ -891,8 +859,6 @@ window.TINS = [
     pairing: "A beach picnic at the bach.",
     colors: ["#2B5C8A", "#F4E8D0"], pattern: "waves",
   },
-
-  /* ---------- THE LATE ADDITIONS — all killer ---------- */
   {
     id: "jose-octopus", brand: "José Gourmet", name: "Octopus in Olive Oil",
     species: "octopus", cc: "PT", medium: "olive oil", price: 2,
