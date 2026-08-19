@@ -275,6 +275,8 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 28px 40px; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
 
+.species-toggle { display: none; }
+
 .chip {
   font: 600 12.5px/1 var(--font-body);
   color: var(--ink-soft);
@@ -468,15 +470,24 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 28px 40px; }
   position: absolute;
   top: 11%;
   right: 9%;
-  width: 26px;
-  padding: 2px;
-  background: #fdfaf3;
-  border-radius: 4px;
-  border: 1px solid rgba(30, 42, 50, 0.18);
-  box-shadow: 0 2px 5px rgba(30, 42, 50, 0.28);
-  transform: rotate(8deg);
+  width: 22px;
+  padding: 1.5px;
+  background: rgba(253, 250, 243, 0.72);
+  border-radius: 3px;
+  border: 1px solid rgba(30, 42, 50, 0.13);
+  box-shadow: 0 1px 2px rgba(30, 42, 50, 0.14);
+  opacity: 0.74;
+  filter: saturate(0.78);
+  transform: rotate(7deg);
+  transition: opacity 0.18s, filter 0.18s;
 }
 .tin-flag svg { display: block; width: 100%; height: auto; border-radius: 2px; }
+.card:hover .tin-flag,
+.card:focus-visible .tin-flag,
+.modal-tin .tin-flag {
+  opacity: 0.9;
+  filter: saturate(0.9);
+}
 
 .tin-star {
   position: absolute;
@@ -961,7 +972,44 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 28px 40px; }
   .nav-btn { padding: 8px 10px; font-size: 12px; }
   .progress-text { display: none; }
   main { padding: 0 16px 30px; }
-  .filterbar { top: 56px; }
+  .filterbar { top: 56px; padding-top: 12px; }
+  .search-wrap { margin-bottom: 8px; }
+  .species-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--ink-soft);
+    background: transparent;
+    border: 0;
+    padding: 5px 2px 9px;
+    font: 700 12px/1 var(--font-body);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .species-toggle svg {
+    width: 10px;
+    margin-left: auto;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.2s;
+  }
+  .species-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+  .species-toggle-count {
+    min-width: 18px;
+    padding: 3px 5px;
+    color: var(--paper);
+    background: var(--red);
+    border-radius: 99px;
+    font-size: 10px;
+    line-height: 1;
+    text-align: center;
+  }
+  .chips { margin-bottom: 10px; }
   .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 18px 14px; }
   .result-count { display: none; }
 }

@@ -66,6 +66,11 @@ if (location.pathname === "/fish") location.replace("/fish/" + location.search +
         <input type="search" id="searchInput" placeholder="Search tins, brands, notes…" aria-label="Search tins">
         <kbd>/</kbd>
       </div>
+      <button class="species-toggle" id="speciesToggle" type="button" aria-expanded="false" aria-controls="speciesChips">
+        <span>Species</span>
+        <span class="species-toggle-count" id="speciesToggleCount" hidden></span>
+        <svg viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg>
+      </button>
       <div class="chips" id="speciesChips" role="group" aria-label="Filter by species"></div>
       <div class="filter-row">
         <select id="countrySelect" aria-label="Filter by country"><option value="">All countries</option></select>

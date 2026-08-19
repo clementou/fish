@@ -626,7 +626,22 @@ function resetFilters() {
   $("#sortSelect").value = "curated";
   $("#hideTastedToggle").checked = false;
   document.querySelectorAll(".chip").forEach((c) => c.setAttribute("aria-pressed", "false"));
+  updateSpeciesToggle();
   renderGrid();
+}
+
+const mobileFilters = window.matchMedia("(max-width: 620px)");
+
+function updateSpeciesToggle() {
+  const n = ui.species.size + Number(ui.iconic);
+  const count = $("#speciesToggleCount");
+  count.textContent = n;
+  count.hidden = n === 0;
+}
+
+function syncSpeciesDisclosure() {
+  const toggle = $("#speciesToggle");
+  $("#speciesChips").hidden = mobileFilters.matches && toggle.getAttribute("aria-expanded") !== "true";
 }
 
 function todayISO() {
@@ -645,6 +660,7 @@ function bindEvents() {
     if (chip.hasAttribute("data-iconic")) {
       ui.iconic = !ui.iconic;
       chip.setAttribute("aria-pressed", String(ui.iconic));
+      updateSpeciesToggle();
       renderGrid();
       return;
     }
@@ -652,8 +668,16 @@ function bindEvents() {
     if (ui.species.has(sp)) ui.species.delete(sp);
     else ui.species.add(sp);
     chip.setAttribute("aria-pressed", String(ui.species.has(sp)));
+    updateSpeciesToggle();
     renderGrid();
   });
+
+  $("#speciesToggle").addEventListener("click", (e) => {
+    const expanded = e.currentTarget.getAttribute("aria-expanded") === "true";
+    e.currentTarget.setAttribute("aria-expanded", String(!expanded));
+    syncSpeciesDisclosure();
+  });
+  mobileFilters.addEventListener("change", syncSpeciesDisclosure);
 
   $("#countrySelect").addEventListener("change", (e) => { ui.country = e.target.value; renderGrid(); });
   $("#mediumSelect").addEventListener("change", (e) => { ui.medium = e.target.value; renderGrid(); });
@@ -767,6 +791,8 @@ function bindEvents() {
   }, { passive: true });
 
   window.addEventListener("resize", sizeCanvas);
+  updateSpeciesToggle();
+  syncSpeciesDisclosure();
 }
 store.load();
 sizeCanvas();
