@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+// When proxied under clementou.com, the bare "/fish" URL would break
+// relative asset paths — bounce to the trailing-slash form.
+if (location.pathname === "/fish") location.replace("/fish/" + location.search + location.hash);
+</script>
 <title>The Fish Club — A Field Guide to Tinned Fish</title>
 <meta name="description" content="Explore a hundred-plus of the world's great canned fish and keep a ledger of every tin you've tasted.">
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect x="3" y="7" width="26" height="19" rx="5" fill="%23C8402A"/><rect x="3" y="7" width="26" height="6" rx="3" fill="%23A8B0B4"/><ellipse cx="15" cy="18" rx="7" ry="3.2" fill="%23F6EFE3"/><path d="M21 18l6-3.4v6.8z" fill="%23F6EFE3"/><circle cx="11" cy="17.2" r="1" fill="%23C8402A"/></svg>'>
